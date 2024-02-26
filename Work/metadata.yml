@@ -1,0 +1,12 @@
+---
+:id: 227707939
+:submitters:
+- :name: Arnav Bhalgat
+  :email: bhalgaaa@mail.uc.edu
+:created_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2024-02-05 19:16:02.945319000 Z
+  zone: !ruby/object:ActiveSupport::TimeZone
+    name: America/Los_Angeles
+  time: 2024-02-05 11:16:02.945319000 Z
+:status: processed
+:score: 89.0
