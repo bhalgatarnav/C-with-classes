@@ -75,6 +75,7 @@ char cipher_the_char(char value, char direction, int shift) {
 /*
 //Challenge! This is the code to decrypt the given number of characters.
 char decrypt_char(int i)
+//The code uses the trial and error method to decrypt and involves the user to read the output.
 {
   std::ifstream inputFill;
   inputFill.open("input5.txt");
