@@ -93,7 +93,7 @@ bool ends_with_double_consonant(std::string str)
     {
         return false;
     }
-    return is_consonant(str[str.length() - 2]) && is_consonant(str[str.length() - 1]);
+    return (is_consonant(str[str.length() - 2]) && is_consonant(str[str.length() - 1]))&& (str[str.length() - 2] == str[str.length() - 1]);
 }
 
 /*
@@ -165,7 +165,7 @@ int count_consonants_at_front(std::string str)
     int count = 0;
     for (int i = 0; i < str.length(); i++)
     {
-        if (!is_consonant(str[i]))
+        if (is_vowel(str[i]))
         {
             break;
         }
