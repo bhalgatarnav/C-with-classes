@@ -1,5 +1,4 @@
 #include <string>
-
 /*
  * is_vowel
  *
@@ -25,6 +24,7 @@ bool is_vowel(char c)
             return true;
         }
     }
+    return false;
     //return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
 }
 
@@ -69,6 +69,7 @@ bool is_consonant(char c)
             return true;
         }
     }
+    return false;
     //return!is_vowel(c);
 }
 
