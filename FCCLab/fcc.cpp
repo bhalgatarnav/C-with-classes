@@ -14,6 +14,7 @@ bool more_to_read(std::ifstream &file) {
   }
   return !(file.eof() || std::iscntrl(file.peek()));
 }
+
 /**
  * <returnIndex>
  * The function should return index of typo in the typos file.
@@ -39,7 +40,8 @@ int fcc(const std::string &fixme_filename, const std::string &typo_filename,
      * fixo_filename: will be the name of the file that contains the fixos for the typos.
      * fixed_sentence: will be the name of the file where the fixed sentence is stored.
     */
-
+   
+    // Vectors consisting the Words extracted from the file.
     std::vector<std::string> fixos;
     std::vector<std::string> typos;
 
@@ -53,6 +55,7 @@ int fcc(const std::string &fixme_filename, const std::string &typo_filename,
     std::ifstream inputFixmeFile;
     inputFixmeFile.open(fixme_filename);
 
+    // Initialise the Counter Variable.
     int count = 0;
 
     /**
@@ -71,20 +74,10 @@ int fcc(const std::string &fixme_filename, const std::string &typo_filename,
         typos.push_back(typo);
     }
 
-  /**
-  * Checking the contents in the declared vectors.:
-  * for (auto str : typos) {
-   std::cout << "str: #" << str << "#\n";
-    }
-
-    for (auto str : fixos) {
-   std::cout << "str: #" << str << "#\n";
-    }
-  */
-  
   if (typos.size()!=fixos.size()){
     return -1; 
   }
+
   else {
   std::string fixme;
   while(more_to_read(inputFixmeFile)){
@@ -93,14 +86,17 @@ int fcc(const std::string &fixme_filename, const std::string &typo_filename,
     if (returnIndex(fixme, typos) == -1){
       fixed_sentence += fixme + " ";
     } else {
+      // Access that same index and check the word in fixos file.
       fixed_sentence += fixos[returnIndex(fixme, typos)] + " ";
       count++;
     }
     
   }
+
+  // Removing the extra space and replacing that with a full stop.
   fixed_sentence = fixed_sentence.substr(0, fixed_sentence.size()-1);
   fixed_sentence += ".";
-  std::cout<< fixed_sentence << std::endl;
+
   return count;
   }
   
