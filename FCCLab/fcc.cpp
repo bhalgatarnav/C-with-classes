@@ -14,6 +14,22 @@ bool more_to_read(std::ifstream &file) {
   }
   return !(file.eof() || std::iscntrl(file.peek()));
 }
+/**
+ * <returnIndex>
+ * The function should return index of typo in the typos file.
+ * input: string
+ * output: index
+ * 
+*/
+int returnIndex(std::string typo, std::vector<std::string> typos) {
+  for (int i = 0; i < typos.size(); i++) {
+    if (typos[i] == typo) {
+      return i;
+    }
+  }
+  return -1;
+}
+
 
 int fcc(const std::string &fixme_filename, const std::string &typo_filename,
         const std::string &fixo_filename, std::string &fixed_sentence) {
@@ -27,12 +43,17 @@ int fcc(const std::string &fixme_filename, const std::string &typo_filename,
     std::vector<std::string> fixos;
     std::vector<std::string> typos;
 
+    // Opening all the files to read the content.
     std::ifstream inputFixosFile;
     inputFixosFile.open(fixo_filename);
 
     std::ifstream inputTyposFile;
     inputTyposFile.open(typo_filename);
     
+    std::ifstream inputFixmeFile;
+    inputFixmeFile.open(fixme_filename);
+
+    int count = 0;
 
     /**
      * A while loop that will read the fixo_filename and typo_filename files and store the words in the fixos and typos vectors.
@@ -49,22 +70,46 @@ int fcc(const std::string &fixme_filename, const std::string &typo_filename,
         inputTyposFile >> typo;
         typos.push_back(typo);
     }
-/**
- * Checking the vectors for the contents:
- * for (auto str : typos) {
+
+  /**
+  * Checking the contents in the declared vectors.:
+  * for (auto str : typos) {
    std::cout << "str: #" << str << "#\n";
     }
 
     for (auto str : fixos) {
    std::cout << "str: #" << str << "#\n";
     }
-*/
+  */
   
-if (typos.size()!=fixos.size())
-
-{
- return -1; 
+  if (typos.size()!=fixos.size()){
+    return -1; 
+  }
+  else {
+  std::string fixme;
+  while(more_to_read(inputFixmeFile)){
+    inputFixmeFile >> fixme;
+    // Call the funtion returnIndex to check if it is a typo.
+    if (returnIndex(fixme, typos) == -1){
+      fixed_sentence += fixme + " ";
+    } else {
+      fixed_sentence += fixos[returnIndex(fixme, typos)] + " ";
+      count++;
+    }
+    
+  }
+  fixed_sentence = fixed_sentence.substr(0, fixed_sentence.size()-1);
+  fixed_sentence += ".";
+  std::cout<< fixed_sentence << std::endl;
+  return count;
+  }
+  
 }
 
-  return -1;
-}
+
+/**
+ * <appendSentence>
+ * The function would append and create the corrected sentence.
+ * input: string
+ * output: void
+*/
