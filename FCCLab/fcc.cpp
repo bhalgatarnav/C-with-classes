@@ -103,9 +103,3 @@ int fcc(const std::string &fixme_filename, const std::string &typo_filename,
 }
 
 
-/**
- * <appendSentence>
- * The function would append and create the corrected sentence.
- * input: string
- * output: void
-*/
