@@ -186,7 +186,7 @@ bool initialize_metaverse_from_file(std::ifstream &metaverse_file,
   return actual_row == size;
 }
 
-/**
+/** model_metaverse()
  * @brief Model the metaverse for a given number of generations.
  * 
  * This function takes a starting metaverse and simulates its evolution for the specified number of generations.
@@ -201,8 +201,9 @@ bool initialize_metaverse_from_file(std::ifstream &metaverse_file,
 void model_metaverse(const metaverse_t &starting_metaverse, int generations) {
   metaverse_t current_metaverse = starting_metaverse;
   for (int i = 0; i < generations; i++) {
-    current_metaverse = tick(current_metaverse);
     display_metaverse(std::cout, current_metaverse);
+    current_metaverse = tick(current_metaverse);
+  
   }
 }
 
