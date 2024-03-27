@@ -8,7 +8,18 @@
 #include <unistd.h>
 #include <vector>
 
+/**count_neighbors 
+ * Objective: Count the number of occupied neighbors for a given location.
+ * Input: A metaverse board (alias referance), a row, and a column.
+ * Output: `int` Number of neighbors,Corresponding to the location.
+ * 
+ * Process: A specific location in a metaverse can have one of three categories of placement:
+ * - Corner: 3 locations (Anything that contains "row = 1 && column = 1" || "row = 1 && column = last_Column_Number" || "row = last_Row_Number && column = 1" || "row = last_Row_Number && column = last_Column_Number")
+ * - Edge: 5 locations (Anything that has " row = 1 || column = 1 || row = last_Row_Number || column = last_Column_Number ")
+ * - Middle: 8 locations (Anything that is not a corner or an edge)
+*/
 int count_neighbors(const metaverse_t &board, int row, int column) {
+  
   return 0;
 }
 
@@ -31,6 +42,10 @@ bool citizenship_row_to_metaverse_row(const std::string &input_row, int row,
 
 bool read_metaverse_configuration_line_from_file(std::ifstream &metaverse_file,
                                                  int &size, int &generations) {
+  char comma;
+  if ((metaverse_file >> size) && (metaverse_file >> comma) && (metaverse_file >> generations)){
+    return true;
+  }
   return false;
 }
 bool initialize_metaverse_from_file(std::ifstream &metaverse_file,

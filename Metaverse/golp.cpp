@@ -1,6 +1,7 @@
 #include "metaverse.h"
 #include <string>
 
+
 int count_neighbors(metaverse_t &board, int row, int column) {
   /* If you get linker errors, make sure that you have declared your functions
    * with the proper types.*/
