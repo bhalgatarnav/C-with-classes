@@ -13,6 +13,7 @@ void unit_test_read_metaverse_configuration_line_from_file() {
  std::cout << "read_metaverse_configuration_line_from_file generations: " << generations << "\n";
 }
 
+void unit_test_count_neighbors(){}
 
 int main() {
 
