@@ -67,6 +67,17 @@ bool occupied_in_next_tick(bool currently_occupied, int neighbor_count) {
   return false;
 }
 
+/**
+ * Creates a new metaverse for a tick in future cosidering today's metaverse board.
+ * 
+ * @param board The current state of the metaverse board.
+ * @return The new state of the metaverse board after the tick.
+ * 
+ * Process: Using Functions :--------------------------------------------------------
+ *      1.  resize_metaverse (int rows, metaverse_t &board)
+ *      2.  count_neighbors (const metaverse_t &board, int row, int column)
+ *      3.  occupied_in_next_tick (bool currently_occupied, int neighbor_count)
+ */
 metaverse_t tick(const metaverse_t &board) {
   metaverse_t New_TickMeta;
   resize_metaverse(board.size(), New_TickMeta);
