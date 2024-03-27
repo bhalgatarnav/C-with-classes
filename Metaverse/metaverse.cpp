@@ -14,14 +14,39 @@
  * Output: `int` Number of neighbors,Corresponding to the location.
  * 
  * Process: A specific location in a metaverse can have one of three categories of placement:
- * - Corner: 3 locations (Anything that contains "row = 1 && column = 1" || "row = 1 && column = last_Column_Number" || "row = last_Row_Number && column = 1" || "row = last_Row_Number && column = last_Column_Number")
- * - Edge: 5 locations (Anything that has " row = 1 || column = 1 || row = last_Row_Number || column = last_Column_Number ")
+ * - Corner: 3 locations (Anything that contains "row = 1 && column = 1" || "row = 1 && column = size" || "row = size && column = 1" || "row = size && column = size")
+ * - Edge: 5 locations (Anything that has " row = 1 || column = 1 || row = size || column = size ")
  * - Middle: 8 locations (Anything that is not a corner or an edge)
 */
 int count_neighbors(const metaverse_t &board, int row, int column) {
+  // determine the location of the cell:
+  std::string location{};
+  if ((row == 0 && column == 0)||(row == 0 && column == board.size()-1)||(row == board.size()-1 && column == 0)||(row == board.size()-1 && column == board.size()-1)){
+    location = 'Corner';
+  }
+  else if ((row == 0)||(column == 0)||(row == board.size()-1)||(column == board.size()-1)){
+    location = 'Edge';
+  }
+  else{
+    location = 'Middle';
+  }
+
+  std::vector<std::vector<int>> directions{{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+  int count = 0;
   
-  return 0;
+    for (const auto& direction : directions) {
+        int newRow = row + direction[0];
+        int newCol = column + direction[1];
+        if (newRow >= 0 && newRow < board.size() && newCol >= 0 && newCol < board[0].size()) {
+            if(board[newRow][newCol]==1){
+              count++;
+            };
+        }
+    }
+    return count;
 }
+ 
+
 
 bool occupied_in_next_tick(bool currently_occupied, int neighbor_count) {
   return false;
