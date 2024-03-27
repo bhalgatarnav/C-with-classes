@@ -17,22 +17,22 @@ void unit_test_count_neighbors(){}
 
 int main() {
 
-  unit_test_read_metaverse_configuration_line_from_file();
+  //unit_test_read_metaverse_configuration_line_from_file();
 
-  // metaverse_t metaverse{};
-  // int generations{};
+  metaverse_t metaverse{};
+  int generations{};
 
-  // std::string metaverse_filename{"universe.meta"};
+  std::string metaverse_filename{"universe.meta"};
 
-  // std::ifstream metaverse_file{metaverse_filename};
+  std::ifstream metaverse_file{metaverse_filename};
 
-  // if (!initialize_metaverse_from_file(metaverse_file, metaverse, generations)) {
-  //   std::cout << "Could not initialize the metaverse!\n";
-  //   return 1;
-  // }
+  if (!initialize_metaverse_from_file(metaverse_file, metaverse, generations)) {
+    std::cout << "Could not initialize the metaverse!\n";
+    return 1;
+  }
 
-  // model_metaverse(metaverse, generations);
+  model_metaverse(metaverse, generations);
 
-  // return 0;
+  return 0;
 }
 

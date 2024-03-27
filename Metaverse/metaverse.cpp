@@ -68,7 +68,19 @@ bool occupied_in_next_tick(bool currently_occupied, int neighbor_count) {
 }
 
 metaverse_t tick(const metaverse_t &board) {
-  return metaverse_t{};
+  metaverse_t New_TickMeta;
+  resize_metaverse(board.size(), New_TickMeta);
+
+  for (int i = 0; i < New_TickMeta.size(); i++) {
+    for (int j = 0; j < New_TickMeta[i].size(); j++) 
+    {
+
+      int neighborCounts = count_neighbors(board, i, j);
+      New_TickMeta[i][j] = occupied_in_next_tick(board[i][j], neighborCounts);
+    }
+  }
+
+  return New_TickMeta;
 }
 
 /** resize_metaverse()
@@ -83,8 +95,8 @@ metaverse_t tick(const metaverse_t &board) {
  */
 bool resize_metaverse(int rows, metaverse_t &board) {
     board.resize(rows);
-    for (auto &row : board) {
-        row.resize(rows);
+    for (auto &column : board) {
+        column.resize(rows);
     }
     return true;
 }
@@ -110,7 +122,7 @@ bool citizenship_row_to_metaverse_row(const std::string &input_row, int row,
       return false;
     }
   }
-
+return true;
 }
 
 /** read_metaverse_configuration_line_from_file()
@@ -129,6 +141,8 @@ bool read_metaverse_configuration_line_from_file(std::ifstream &metaverse_file,
   }
   return false;
 }
+
+
 bool initialize_metaverse_from_file(std::ifstream &metaverse_file,
                                     metaverse_t &metaverse,
                                     int &generations) {
@@ -162,4 +176,5 @@ bool initialize_metaverse_from_file(std::ifstream &metaverse_file,
 }
 
 void model_metaverse(const metaverse_t &starting_metaverse, int generations) {
+
 }
