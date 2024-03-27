@@ -90,9 +90,27 @@ bool resize_metaverse(int rows, metaverse_t &board) {
 }
   
 
+/**
+ * Converts a citizenship row to a metaverse row.
+ * 
+ * @param input_row The input string representing the citizenship row.
+ * @param row The row index in the metaverse board.
+ * @param board The metaverse board.
+ * @return True if the conversion is successful, false otherwise.
+ */
 bool citizenship_row_to_metaverse_row(const std::string &input_row, int row,
                                       metaverse_t &board) {
-  return false;
+  
+  for (int strIndex = 0; strIndex < input_row.size(); strIndex++) {
+    if (input_row[strIndex] == '1') {
+      board[row][strIndex] = 1;
+    } else if (input_row[strIndex] == '0') {
+      board[row][strIndex] = 0;
+    } else {
+      return false;
+    }
+  }
+
 }
 
 /** read_metaverse_configuration_line_from_file()
