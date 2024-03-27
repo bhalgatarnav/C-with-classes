@@ -71,9 +71,24 @@ metaverse_t tick(const metaverse_t &board) {
   return metaverse_t{};
 }
 
+/** resize_metaverse()
+ * This function will resize a Metaverse according to a given size.
+ * 
+ * @param rows The number of rows to resize the metaverse board to.
+ * @param board The metaverse board to be resized.
+ * @return True if the metaverse board was successfully resized, false otherwise.
+ * 
+ * Process:The function will resize the given metaverse_t parameter according to the specified size. 
+ *         The function always returns true.
+ */
 bool resize_metaverse(int rows, metaverse_t &board) {
-  return false;
+    board.resize(rows);
+    for (auto &row : board) {
+        row.resize(rows);
+    }
+    return true;
 }
+  
 
 bool citizenship_row_to_metaverse_row(const std::string &input_row, int row,
                                       metaverse_t &board) {
