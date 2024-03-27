@@ -67,6 +67,7 @@ bool occupied_in_next_tick(bool currently_occupied, int neighbor_count) {
   return false;
 }
 
+
 /**
  * Creates a new metaverse for a tick in future cosidering today's metaverse board.
  * 
@@ -93,6 +94,7 @@ metaverse_t tick(const metaverse_t &board) {
 
   return New_TickMeta;
 }
+
 
 /** resize_metaverse()
  * This function will resize a Metaverse according to a given size.
@@ -136,6 +138,7 @@ bool citizenship_row_to_metaverse_row(const std::string &input_row, int row,
 return true;
 }
 
+
 /** read_metaverse_configuration_line_from_file()
  * Reads a line from the metaverse configuration file and extracts the size and generations values.
  * 
@@ -154,6 +157,16 @@ bool read_metaverse_configuration_line_from_file(std::ifstream &metaverse_file,
 }
 
 
+/**
+ * @brief Initializes the metaverse from a file.
+ * 
+ * This function reads the metaverse configuration from the given file and initializes the metaverse and the number of generations.
+ * 
+ * @param metaverse_file The input file stream containing the metaverse configuration.
+ * @param metaverse The metaverse to be initialized.
+ * @param generations The number of generations to be initialized.
+ * @return True if the metaverse is successfully initialized, false otherwise.
+ */
 bool initialize_metaverse_from_file(std::ifstream &metaverse_file,
                                     metaverse_t &metaverse,
                                     int &generations) {
@@ -185,6 +198,7 @@ bool initialize_metaverse_from_file(std::ifstream &metaverse_file,
   }
   return actual_row == size;
 }
+
 
 /** model_metaverse()
  * @brief Model the metaverse for a given number of generations.
