@@ -11,10 +11,12 @@
 
 /** count_neighbors()
  * Counts the number of neighboring cells that contain the value 1 in a given metaverse board.
- * 
+ * Input:
  * @param board The metaverse board represented as a 2D vector of integers.
  * @param row The row index of the cell for which neighbors need to be counted.
  * @param column The column index of the cell for which neighbors need to be counted.
+ * 
+ * Output:
  * @return The count of neighboring cells that contain the value 1.
  * 
  * Process: Create a verctor that will have the changes in rows and columns
@@ -46,8 +48,10 @@ int count_neighbors(const metaverse_t &board, int row, int column) {
 
 /** occupied_in_next_tick()
  * Determines if a cell will be occupied in the next tick based on its current state and neighbor count.
+ * Input:
  * @param currently_occupied The current state of the cell (occupied or unoccupied).
  * @param neighbor_count The number of occupied neighboring cells.
+ * Output:
  * @return True if the cell will be occupied in the next tick, false otherwise.
  * 
  * Process: Check if cell is currently occupied
@@ -71,7 +75,10 @@ bool occupied_in_next_tick(bool currently_occupied, int neighbor_count) {
 /**
  * Creates a new metaverse for a tick in future cosidering today's metaverse board.
  * 
+ * Input:
  * @param board The current state of the metaverse board.
+ * 
+ * Output:
  * @return The new state of the metaverse board after the tick.
  * 
  * Process: Using Functions :--------------------------------------------------------
@@ -99,8 +106,11 @@ metaverse_t tick(const metaverse_t &board) {
 /** resize_metaverse()
  * This function will resize a Metaverse according to a given size.
  * 
+ * Input: 
  * @param rows The number of rows to resize the metaverse board to.
  * @param board The metaverse board to be resized.
+ * 
+ * Output:
  * @return True if the metaverse board was successfully resized, false otherwise.
  * 
  * Process:The function will resize the given metaverse_t parameter according to the specified size. 
@@ -118,9 +128,12 @@ bool resize_metaverse(int rows, metaverse_t &board) {
 /**
  * Converts a citizenship row to a metaverse row.
  * 
+ * Input:
  * @param input_row The input string representing the citizenship row.
  * @param row The row index in the metaverse board.
  * @param board The metaverse board.
+ * 
+ * Output:
  * @return True if the conversion is successful, false otherwise.
  */
 bool citizenship_row_to_metaverse_row(const std::string &input_row, int row,
@@ -142,9 +155,12 @@ return true;
 /** read_metaverse_configuration_line_from_file()
  * Reads a line from the metaverse configuration file and extracts the size and generations values.
  * 
+ * Input:
  * @param metaverse_file The input file stream to read from.
  * @param size [out] The variable to store the extracted size value.
  * @param generations [out] The variable to store the extracted generations value.
+ * 
+ * Output:
  * @return True if the line was successfully read and values were extracted, false otherwise.
  */
 bool read_metaverse_configuration_line_from_file(std::ifstream &metaverse_file,
@@ -162,9 +178,12 @@ bool read_metaverse_configuration_line_from_file(std::ifstream &metaverse_file,
  * 
  * This function reads the metaverse configuration from the given file and initializes the metaverse and the number of generations.
  * 
+ * Input:
  * @param metaverse_file The input file stream containing the metaverse configuration.
  * @param metaverse The metaverse to be initialized.
  * @param generations The number of generations to be initialized.
+ * 
+ * Output:
  * @return True if the metaverse is successfully initialized, false otherwise.
  */
 bool initialize_metaverse_from_file(std::ifstream &metaverse_file,
@@ -206,8 +225,12 @@ bool initialize_metaverse_from_file(std::ifstream &metaverse_file,
  * This function takes a starting metaverse and simulates its evolution for the specified number of generations.
  * Each generation is represented by a tick in the metaverse.
  * 
+ * Input:
  * @param starting_metaverse The initial metaverse to start the simulation from.
  * @param generations The number of generations to simulate.
+ * 
+ * Output:
+ * None. The function is initialized with the keyword void.
  * 
  * Process: Using Functions :--------------------------------------------------------
  *          1.  tick (const metaverse_t &board) 
