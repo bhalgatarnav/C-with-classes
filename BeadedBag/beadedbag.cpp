@@ -5,6 +5,10 @@
 
 // Implement the BeadedBag::size and BeadedBag::insert member functions here.
 
+void BeadedBag::insert(Item to_insert){
+  this->bag.push_back(to_insert);
+}
+
 /**
  * size()
  * Returns the size of the BeadedBag.
@@ -15,6 +19,7 @@
 int BeadedBag::size(){
   return this->bag.size();
 }
+
 /**
  * BeadedBag(...)
  * Checks if the BeadedBag contains a specific item.
