@@ -5,6 +5,13 @@
 
 // Implement the BeadedBag::size and BeadedBag::insert member functions here.
 
+/**
+ * BeadedBag
+ * Inserts an item into the beaded bag if not present already.
+ * 
+ * input: @param to_insert The item to be inserted.
+ * output: nothing
+ */
 void BeadedBag::insert(Item to_insert){
   if (!this->contains(to_insert)){
   this->bag.push_back(to_insert);
