@@ -5,7 +5,19 @@
 
 // Implement the BeadedBag::size and BeadedBag::insert member functions here.
 
-// Complete the implementation of the BeadedBag::contains member function.
+
+/**
+ * BeadedBag
+ * Checks if the BeadedBag contains a specific item.
+ * 
+ * input: @param maybe_contained_item The item to check for.
+ * output: @return True if the item is found in the bag, false otherwise.
+ */
 bool BeadedBag::contains(Item maybe_contained_item) {
+  for (auto item : bag) {
+    if (item.isEqual(maybe_contained_item)) {
+      return true;
+    }
+  }
   return false;
 }
