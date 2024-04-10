@@ -20,7 +20,7 @@ void BeadedBag::insert(Item to_insert){
 
 /**
  * size()
- * Returns the size of the BeadedBag.
+ * This function will return the number of Items in the Beaded Bag.
  *
  * input: nothing
  * output: @return The size of the BeadedBag.
@@ -31,7 +31,8 @@ int BeadedBag::size(){
 
 /**
  * BeadedBag(...)
- * Checks if the BeadedBag contains a specific item.
+ * This function will return true if maybe_contained_item is already present in the Beaded Bag; 
+ * it will return false otherwise.
  * 
  * input: @param maybe_contained_item The item to check for.
  * output: @return True if the item is found in the bag, false otherwise.
