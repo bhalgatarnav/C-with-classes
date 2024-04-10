@@ -6,7 +6,7 @@
 // Implement the BeadedBag::size and BeadedBag::insert member functions here.
 
 /**
- * BeadedBag
+ * insert(..)
  * Inserts an item into the beaded bag if not present already.
  * 
  * input: @param to_insert The item to be inserted.
@@ -30,7 +30,7 @@ int BeadedBag::size(){
 }
 
 /**
- * BeadedBag(...)
+ * contains(...)
  * This function will return true if maybe_contained_item is already present in the Beaded Bag; 
  * it will return false otherwise.
  * 
