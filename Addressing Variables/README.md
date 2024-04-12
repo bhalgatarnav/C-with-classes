@@ -4,3 +4,10 @@ Every variable is allocated a section of memory large enough to hold a value of 
 Each byte of memory has a unique address. A ***variable's address is the address of the first byte allocated to that variable.***
 
 ## Getting the address of a variable:
+Getting the address of a variable is accomplished with `&` operator in C++.
+
+When the address operator (&) is placed in front of a variable name, it returns the address of that variable. Here is an expression that returns the address of the variable amount:
+`&amount`
+
+And here is a statement that displays the variable's address on the screen:
+`std::cout << &amount`
