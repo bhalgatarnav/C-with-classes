@@ -21,6 +21,7 @@ A **pointer variable**, which often is just called a pointer, is a special varia
 `int *ptr;`
 The ***asterisk in front of the variable name indicates that pt r is a pointer variable.*** 
 
+
 The int data type indicates that pt r can be used to hold the address of an integer variable. The definition statement above would read "ptr is a pointer to an int."
 
 
