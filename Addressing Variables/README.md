@@ -11,3 +11,9 @@ When the address operator (&) is placed in front of a variable name, it returns 
 
 And here is a statement that displays the variable's address on the screen:
 `std::cout << &amount`
+
+
+## Pointer Variables
+CONCEPT: Pointer variables, which are often just called pointers, are designed to hold memory addresses. With pointer variables, you can indirectly manipulate data stored in other variables.
+
+A **pointer variable**, which often is just called a pointer, is a special variable that **holds a memory address**. Just as int variables are designed to hold integers, and double variables are designed to hold floating-point numbers, pointer variables are designed to hold memory addresses.
