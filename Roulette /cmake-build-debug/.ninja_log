@@ -1,0 +1,9 @@
+# ninja log v6
+2	60	1727732902956358288	CMakeFiles/Roulette_.dir/Player.cpp.o	e02d60d4a458b587
+9	88	1727733114346164508	build.ninja	e86669fb7ca47e53
+2	59	1727732902956139742	CMakeFiles/Roulette_.dir/Wheel.cpp.o	2f66aba599407b17
+8	667	1727732933000772399	CMakeFiles/Roulette_.dir/main.cpp.o	1aee206d2d0bdc9c
+7	96	1727733152273608601	CMakeFiles/Roulette_.dir/Player.cpp.o	e02d60d4a458b587
+7	96	1727733152273414976	CMakeFiles/Roulette_.dir/Wheel.cpp.o	2f66aba599407b17
+7	714	1727733152273034560	CMakeFiles/Roulette_.dir/main.cpp.o	1aee206d2d0bdc9c
+715	762	1727733152980631559	Roulette_	32e4c9fa0625a8e1
