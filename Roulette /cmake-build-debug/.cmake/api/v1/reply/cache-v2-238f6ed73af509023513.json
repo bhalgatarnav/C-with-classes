@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/bhalgatarnav/CLionProjects/Roulette /cmake-build-debug"
+			"value" : "/Users/bhalgatarnav/Documents/GitHub/C-with-classes/Roulette /cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -479,7 +479,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/bhalgatarnav/CLionProjects/Roulette /cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/bhalgatarnav/Documents/GitHub/C-with-classes/Roulette /cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/bhalgatarnav/CLionProjects/Roulette "
+			"value" : "/Users/bhalgatarnav/Documents/GitHub/C-with-classes/Roulette "
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1127,7 +1127,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/bhalgatarnav/CLionProjects/Roulette /cmake-build-debug"
+			"value" : "/Users/bhalgatarnav/Documents/GitHub/C-with-classes/Roulette /cmake-build-debug"
 		},
 		{
 			"name" : "Roulette__IS_TOP_LEVEL",
@@ -1151,7 +1151,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/bhalgatarnav/CLionProjects/Roulette "
+			"value" : "/Users/bhalgatarnav/Documents/GitHub/C-with-classes/Roulette "
 		}
 	],
 	"kind" : "cache",

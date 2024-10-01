@@ -6,4 +6,6 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(Roulette_ main.cpp
         Wheel.cpp
         Player.cpp
+        HardMode.h
+        HardMode.cpp
 )

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <limits> // Required for numeric_limits
 
+#include "HardMode.h"
+
 
 using namespace std;
 
@@ -104,11 +106,18 @@ void playRound(Player& player, Wheel& houseWheel) {
     // Calling the getPlayerBet function to determine the bet player wants to place.
     int bet = getPlayerBet(player);
 
+    if (player.getMoney() < bet*2) {
+        cout << " Sorry :( The game requires a margin that’s double the bet amount. \n";
+        return;
+    }
+
     // Getting the random number (minVal, maxVal)
     // Both parties spin their wheel and determine the number
     int playerSpin = player.spin();
     int houseSpin1 = houseWheel.spin();
 
+
+    houseWheel.setRange(1,10);
     cout << "Player's spin value: " << playerSpin << endl;
 
     // Calling getBetChangeChoice to check if player wants any changes.
@@ -156,47 +165,118 @@ void playRound(Player& player, Wheel& houseWheel) {
 }
 
 
+void playHardRound(Player& player, HardMode& hardHouseWheel) {
+    int bet = getPlayerBet(player);
+    if (player.getMoney() < bet*2) {
+        cout << " Sorry :( The game requires a margin that’s double the bet amount. \n";
+        return;
+    }
+
+    int playerSpin = player.spin();
+
+    hardHouseWheel.displayRange();
+    cout << "Player's spin value: " << playerSpin << endl;
+
+    // Calling the getPlayerBet function to determine the bet player wants to place.
+    char betChange = getBetChangeChoice();
+
+    int houseSpin1 = hardHouseWheel.Hspin(playerSpin);
+    int houseSpin2;
+
+    double betMultiplier = 1.0;
+
+
+
+    if (betChange == 'd') {
+        houseSpin2 = hardHouseWheel.Hspin(playerSpin);
+        betMultiplier = 2.0;
+
+    } else if (betChange == 'h') {
+        houseSpin2 = hardHouseWheel.Hspin(playerSpin);
+        betMultiplier = 0.5;
+
+    }
+
+    if (determineWinner(playerSpin, houseSpin1, houseSpin2, betChange)) {
+        player.setMoney(player.getMoney() + bet * betMultiplier);
+    }
+    else {
+        player.setMoney(player.getMoney() - bet * betMultiplier);
+    }
+
+
+
+    if (betChange != 'k') {
+        cout << "House spins: " << houseSpin1 << ", " << houseSpin2 << endl;
+    }
+    else {
+        cout << "House spin: " << houseSpin1 << endl;
+    }
+
+    cout << "Updated Current balance: " << player.getMoney() << endl;
+}
 
 
 int main() {
-    Player player(100);  // Initial player money
+
+    cout << "Gamble to Win! Enter the amount you want to invest: ";
+
+    int invValue, minRange, maxRange;
+    cin >> invValue;
+    Player player(invValue);
+
     Wheel houseWheel;
 
-
+    char continueChoice = 'y';
     char gameMode;
-    do {
-        cout << "Select Game mode: Normal (n) or Hard (h)? ";
-        cin >> gameMode;
-        if (gameMode != 'n' && gameMode != 'h') {
-            cout << "Invalid choice. Please enter 'n' or 'h'." << endl;
-        }
-    } while (gameMode != 'n' && gameMode != 'h');
 
-
-
-    while (player.getMoney() >= 6) { // Minimum bet is 6
-        cout << "\nNew Round!\n";
-
-        if (gameMode == 'n') {
-            playRound(player, houseWheel);
-        }
-
-
-        char continueChoice;
+    do{
         do {
-            cout << "Play another round? (y/n): ";
-            cin >> continueChoice;
-             if(continueChoice != 'y' && continueChoice != 'n'){
-                 cout << "Invalid choice. Please enter 'y' or 'n': ";
+            cout << "Select Game mode: Normal (n) or Hard (h)? ";
+            cin >> gameMode;
+            if (gameMode != 'n' && gameMode != 'h') {
+                cout << "Invalid choice. Please enter 'n' or 'h'." << endl;
+            }
+        } while (gameMode != 'n' && gameMode != 'h');
+
+
+            if (gameMode == 'n') {
+                cout << "\n Normal Round! (Fixed Range 1-10) \n";
+
+                // if (player.getMoney() < invValue*2) {
+                //
+                // }
+                playRound(player, houseWheel);
             }
 
-        } while (continueChoice != 'y' && continueChoice != 'n');
+            else if (gameMode == 'h') {
+                 cout << "\n Hard Round! (Range keeps changing) \n";
+                // cout << "Enter the minimum value in the range: ";
+                // cin >> minRange;
+                //
+                // cout << "Enter the maximum value in the range: ";
+                // cin >> maxRange;
+
+                // Calling the constructor
+                HardMode hardHouseWheel (5, 100, 1, 10);
+                playHardRound(player, hardHouseWheel);
+
+            }
 
 
-        if (continueChoice != 'y') {
-            break;
-        }
-    }
+            do{
+                cout << "\nPlay another round? (y/n): ";
+                cin >> continueChoice;
+                if(continueChoice != 'y' && continueChoice != 'n'){
+                    cout << "\nInvalid choice. Please enter 'y' or 'n': ";
+                }
+
+            } while (continueChoice != 'y' && continueChoice != 'n');
+
+
+        } while (continueChoice == 'y' && player.getMoney() >= 0);
+
+
 
 
     cout << "\nGame Over! Final balance: " << player.getMoney() << endl;
