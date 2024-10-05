@@ -166,21 +166,31 @@ void playRound(Player& player, Wheel& houseWheel) {
 
 
 void playHardRound(Player& player, HardMode& hardHouseWheel) {
+    // Get the players Bet
     int bet = getPlayerBet(player);
+
+    // Check if they can actually place the bet
     if (player.getMoney() < bet*2) {
         cout << " Sorry :( The game requires a margin that’s double the bet amount. \n";
         return;
     }
 
+    // Get the players Spin & Display the result
+    // Player's spin range stays the same [1,10]
     int playerSpin = player.spin();
-
-    hardHouseWheel.displayRange();
     cout << "Player's spin value: " << playerSpin << endl;
+
+    // Determine the win streak and change the range accordingly.
+    hardHouseWheel.maxValue();
+
+    // Giving player an idea of what they are betting against.
+    hardHouseWheel.displayRange();
+
 
     // Calling the getPlayerBet function to determine the bet player wants to place.
     char betChange = getBetChangeChoice();
 
-    int houseSpin1 = hardHouseWheel.Hspin(playerSpin);
+    int houseSpin1 = hardHouseWheel.Hspin();
     int houseSpin2;
 
     double betMultiplier = 1.0;
@@ -188,29 +198,36 @@ void playHardRound(Player& player, HardMode& hardHouseWheel) {
 
 
     if (betChange == 'd') {
-        houseSpin2 = hardHouseWheel.Hspin(playerSpin);
+        houseSpin2 = hardHouseWheel.Hspin();
         betMultiplier = 2.0;
 
     } else if (betChange == 'h') {
-        houseSpin2 = hardHouseWheel.Hspin(playerSpin);
+        houseSpin2 = hardHouseWheel.Hspin();
         betMultiplier = 0.5;
 
     }
 
-    if (determineWinner(playerSpin, houseSpin1, houseSpin2, betChange)) {
-        player.setMoney(player.getMoney() + bet * betMultiplier);
-    }
-    else {
-        player.setMoney(player.getMoney() - bet * betMultiplier);
-    }
-
-
-
+    // Letting the user know the house spins
     if (betChange != 'k') {
         cout << "House spins: " << houseSpin1 << ", " << houseSpin2 << endl;
     }
     else {
         cout << "House spin: " << houseSpin1 << endl;
+    }
+
+
+
+
+    // Who was the winner?
+    if (determineWinner(playerSpin, houseSpin1, houseSpin2, betChange)) {
+        player.setMoney(player.getMoney() + bet * betMultiplier);
+        hardHouseWheel.setWinsStreak(-1);
+        cout << "You WON! House Win Streak: "<< hardHouseWheel.getWinStreak() << endl;
+    }
+    else {
+        player.setMoney(player.getMoney() - bet * betMultiplier);
+        hardHouseWheel.setWinsStreak(1);
+        cout << "You LOST! House Win Streak: "<< hardHouseWheel.getWinStreak() << endl;
     }
 
     cout << "Updated Current balance: " << player.getMoney() << endl;
@@ -223,9 +240,17 @@ int main() {
 
     int invValue, minRange, maxRange;
     cin >> invValue;
+
+    // Initiate a player with the initial investment.
     Player player(invValue);
 
+    // Calling the constructor.
+    HardMode hardHouseWheel (5, 100, 1, 10);
+    hardHouseWheel.setWinsStreak(0);
+
+    //
     Wheel houseWheel;
+
 
     char continueChoice = 'y';
     char gameMode;
@@ -257,8 +282,6 @@ int main() {
                 // cout << "Enter the maximum value in the range: ";
                 // cin >> maxRange;
 
-                // Calling the constructor
-                HardMode hardHouseWheel (5, 100, 1, 10);
                 playHardRound(player, hardHouseWheel);
 
             }

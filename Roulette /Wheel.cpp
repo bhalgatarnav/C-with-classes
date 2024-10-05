@@ -16,6 +16,10 @@ int Wheel::spin() const {
     return minVal + (rand() % (maxVal - minVal + 1));
 }
 
+int Wheel::spin(int min, int max) {
+    return min + (rand() % (max - min + 1));
+}
+
 int Wheel::getMin() const {
     return minVal;
 }

@@ -6,36 +6,45 @@ HardMode::HardMode(int leastAmountVal, int highestRangeVal, int min, int max)
     : Wheel(min, max), houseWinsStreak(0), leastAmount(leastAmountVal), highestRange(highestRangeVal) {}
 
 
-int HardMode::Hspin(int playerResult) {    // Method name matches class name
-    int houseResult = Wheel::spin();
+int HardMode::Hspin() {    // Method name matches class name
 
-    if (playerResult > houseResult) {
-        houseWinsStreak = 0;
-        int newMax = getMax() * 2;
-        if (newMax > 100) {
-            newMax = 100;
-        }
-        setRange(getMin(), newMax);
+    int houseResult = Wheel::spin(getMin(), highWheel);
 
-    } else {
-        houseWinsStreak++;
-        if (houseWinsStreak >= 2) {
-            int newRange = getMax() / 2;
-            if (newRange < leastAmount) {  // Use leastAmount here
-                newRange = leastAmount;
-                setRange(getMin(), newRange);
-            }
-            if (newRange > highestRange) {  // Use highestRange here
-                newRange = highestRange;
-                setRange(getMin(), newRange);
-            }
-            
-            houseWinsStreak = 0;
-        }
-    }
     return houseResult;
 }
 
-void HardMode::displayRange() const{
-    std::cout << "New House Wheel range: " << getMin() << "-" << getMax() << std::endl;
+int HardMode::maxValue() {
+    highWheel = getMax();
+
+    if (houseWinsStreak == 2) {
+        houseWinsStreak = 0;
+
+        int newRange = getMax() / 2;
+
+            highWheel = newRange;
+
+    }
+    else if (houseWinsStreak == -2) {
+        houseWinsStreak = 0;
+        int newRange = getMax() * 2;
+
+            highWheel = newRange;
+
+
+    }
 }
+
+void HardMode::displayRange() const{
+    std::cout << "  Current House Wheel range: " << getMin() << "-" << highWheel << std::endl;
+}
+
+void HardMode::setWinsStreak(int wins) const {
+    prevHouseWinsStreak = houseWinsStreak;
+    houseWinsStreak += wins;
+}
+
+int HardMode::getWinStreak() const {
+    return houseWinsStreak;
+}
+
+
