@@ -13,7 +13,7 @@ int HardMode::Hspin() {    // Method name matches class name
     return houseResult;
 }
 
-int HardMode::maxValue() {
+void HardMode::maxValue() {
     highWheel = getMax();
 
     if (houseWinsStreak == 2) {

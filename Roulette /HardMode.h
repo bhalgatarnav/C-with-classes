@@ -25,7 +25,7 @@ public:
     bool winsStreak() const;
 
 
-    int maxValue();
+    void maxValue();
 
 };
 
