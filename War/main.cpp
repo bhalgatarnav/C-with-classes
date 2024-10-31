@@ -9,22 +9,18 @@
 using namespace std;
 
 
-// Function to initialize decks with unique random cards (1 to 10)
 void initializeDeck(Deck &deck) {
     std::vector<int> cards;
 
-    // Fill the vector with unique values from 1 to 10
     for (int i = 1; i <= 10; ++i) {
         cards.push_back(i);
     }
 
-    // Create a random number generator and seed it with the current time
-    std::mt19937 rng(std::time(0));
+    std::random_device rd;
+    std::mt19937 rng(rd());
 
-    // Shuffle the vector to randomize the order of the cards
     std::shuffle(cards.begin(), cards.end(), rng);
 
-    // Enqueue the shuffled cards into the deck
     for (int card : cards) {
         deck.enqueue(card);
     }
