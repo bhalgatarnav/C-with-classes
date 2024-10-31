@@ -1,4 +1,4 @@
-# Install script for directory: /Users/bhalgatarnav/CLionProjects/War
+# Install script for directory: /Users/bhalgatarnav/Documents/Documents - Arnav’s MacBook Pro/GitHub/C-with-classes/War
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/bhalgatarnav/CLionProjects/War/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/bhalgatarnav/Documents/Documents - Arnav’s MacBook Pro/GitHub/C-with-classes/War/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

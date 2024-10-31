@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/bhalgatarnav/CLionProjects/War/cmake-build-debug"
+			"value" : "/Users/bhalgatarnav/Documents/Documents - Arnav\u2019s MacBook Pro/GitHub/C-with-classes/War/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -479,7 +479,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/bhalgatarnav/CLionProjects/War/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/bhalgatarnav/Documents/Documents - Arnav\u2019s MacBook Pro/GitHub/C-with-classes/War/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/bhalgatarnav/CLionProjects/War"
+			"value" : "/Users/bhalgatarnav/Documents/Documents - Arnav\u2019s MacBook Pro/GitHub/C-with-classes/War"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -771,7 +771,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk"
+			"value" : "/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -1127,7 +1127,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/bhalgatarnav/CLionProjects/War/cmake-build-debug"
+			"value" : "/Users/bhalgatarnav/Documents/Documents - Arnav\u2019s MacBook Pro/GitHub/C-with-classes/War/cmake-build-debug"
 		},
 		{
 			"name" : "War_IS_TOP_LEVEL",
@@ -1151,7 +1151,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/bhalgatarnav/CLionProjects/War"
+			"value" : "/Users/bhalgatarnav/Documents/Documents - Arnav\u2019s MacBook Pro/GitHub/C-with-classes/War"
 		}
 	],
 	"kind" : "cache",
