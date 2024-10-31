@@ -57,7 +57,7 @@ void playRound(Deck &playerDeck, Deck &computerDeck, SidePile &playerSidePile, S
 
     cout << "\nYour card sum: " << sum << ", Computer's card: " << computerCard << endl;
 
-    if (playerCard > computerCard) {
+    if (sum > computerCard) {
         cout << "You win the round!\n";
         playerDeck.enqueue(playerCard);
         playerDeck.enqueue(computerCard);
