@@ -19,20 +19,13 @@ void playRound(Deck &playerDeck, Deck &computerDeck, SidePile &playerSidePile, S
     int playerCard = playerDeck.dequeue();
     int sum = 0;
 
-    do {
-        cout << "\nYour top card is: " << playerCard << ".\nDo you want to (P)ush or (L)pull a card? ";
-        cin >> choice;
+    cout << "\nYour top card is: " << playerCard << ".\nDo you want to (P)ush or (L)pull a card? ";
+    cin >> choice;
 
-        if (choice != 'P' && choice != 'p' && choice != 'L' && choice != 'l') {
-            cout << "\nInvalid input. Please enter 'P' for Push or 'L' for Pull.\n";
-        }
-
-    } while (choice != 'P' && choice != 'p' && choice != 'L' && choice != 'l');
 
     if (choice == 'P' || choice == 'p') {
 
         if (playerSidePile.size() < 5) {
-            // Pushed the card on to the pile
             playerSidePile.push(playerCard);
             cout << "\nYou pushed card " << playerCard << " to your side pile.\n";
 
@@ -58,31 +51,23 @@ void playRound(Deck &playerDeck, Deck &computerDeck, SidePile &playerSidePile, S
         }
     }
 
-
-
     // Computer's random decision
     int computerCard = computerDeck.dequeue();
     cout << "Computer plays card: " << computerCard << endl;
 
     cout << "\nYour card sum: " << sum << ", Computer's card: " << computerCard << endl;
 
-    if (playerCard > computerCard ) {
+    if (sum > computerCard) {
         cout << "You win the round!\n";
+        playerDeck.enqueue(playerCard);
+        playerDeck.enqueue(computerCard);
 
-        // Card would not be added to both the decks.
-        // Position of the card would depend on the choice made my the player.
-        if (choice == 'P' || choice == 'p') {
-            playerDeck.enqueue(computerCard);
-        }
-        else {
-            playerDeck.enqueue(playerCard);
-            playerDeck.enqueue(computerCard);
-        }
 
     } else {
         cout << "Computer wins the round.\n";
         computerDeck.enqueue(playerCard);
         computerDeck.enqueue(computerCard);
+
 
     }
 }
