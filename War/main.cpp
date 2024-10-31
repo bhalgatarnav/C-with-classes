@@ -32,6 +32,7 @@ void playRound(Deck &playerDeck, Deck &computerDeck, SidePile &playerSidePile, S
     char choice;
     int playerCard = playerDeck.dequeue();
     int sum = 0;
+    int removedCard;
 
     do {
         cout << "\nYour top card is: " << playerCard << ".\nDo you want to (P)ush or (L)pull a card? ";
@@ -61,7 +62,7 @@ void playRound(Deck &playerDeck, Deck &computerDeck, SidePile &playerSidePile, S
     } else if (choice == 'L' || choice == 'l') {
 
         if (!playerSidePile.isEmpty()) {
-            int removedCard = playerSidePile.pop();
+            removedCard = playerSidePile.pop();
             cout << "\nYou pulled "<< removedCard <<" from your side pile.\n";
 
             sum = playerCard + removedCard;
@@ -85,6 +86,7 @@ void playRound(Deck &playerDeck, Deck &computerDeck, SidePile &playerSidePile, S
             playerDeck.enqueue(computerCard);
         }
         else if (choice == 'L' && choice == 'l') {
+            playerDeck.enqueue(removedCard);
             playerDeck.enqueue(playerCard);
             playerDeck.enqueue(computerCard);
         }
