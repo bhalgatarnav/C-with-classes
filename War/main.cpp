@@ -3,12 +3,30 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
+#include <vector>
+#include <random>
 using namespace std;
 
-// Function to initialize decks with random cards
+
+// Function to initialize decks with unique random cards (1 to 10)
 void initializeDeck(Deck &deck) {
-    for (int i = 0; i < 10; ++i) {
-        deck.enqueue(rand() % 10 + 1);  // Cards from 1 to 10
+    std::vector<int> cards;
+
+    // Fill the vector with unique values from 1 to 10
+    for (int i = 1; i <= 10; ++i) {
+        cards.push_back(i);
+    }
+
+    // Create a random number generator and seed it with the current time
+    std::mt19937 rng(std::time(0));
+
+    // Shuffle the vector to randomize the order of the cards
+    std::shuffle(cards.begin(), cards.end(), rng);
+
+    // Enqueue the shuffled cards into the deck
+    for (int card : cards) {
+        deck.enqueue(card);
     }
 }
 
@@ -19,8 +37,16 @@ void playRound(Deck &playerDeck, Deck &computerDeck, SidePile &playerSidePile, S
     int playerCard = playerDeck.dequeue();
     int sum = 0;
 
-    cout << "\nYour top card is: " << playerCard << ".\nDo you want to (P)ush or (L)pull a card? ";
-    cin >> choice;
+    do {
+        cout << "\nYour top card is: " << playerCard << ".\nDo you want to (P)ush or (L)pull a card? ";
+        cin >> choice;
+
+        if (choice != 'P' && choice != 'p' && choice != 'L' && choice != 'l') {
+            cout << "\nInvalid input. Please enter 'P' for Push or 'L' for Pull.\n";
+        }
+
+    } while (choice != 'P' && choice != 'p' && choice != 'L' && choice != 'l');
+
 
 
     if (choice == 'P' || choice == 'p') {
@@ -59,12 +85,20 @@ void playRound(Deck &playerDeck, Deck &computerDeck, SidePile &playerSidePile, S
 
     if (sum > computerCard) {
         cout << "You win the round!\n";
-        playerDeck.enqueue(playerCard);
-        playerDeck.enqueue(computerCard);
+        if (choice == 'P' && choice == 'p') {
+            playerDeck.enqueue(computerCard);
+        }
+        else if (choice == 'L' && choice == 'l') {
+            playerDeck.enqueue(playerCard);
+            playerDeck.enqueue(computerCard);
+        }
 
 
     } else {
         cout << "Computer wins the round.\n";
+        if (choice == 'P' && choice == 'p') {
+            playerSidePile.pop();
+        }
         computerDeck.enqueue(playerCard);
         computerDeck.enqueue(computerCard);
 
